@@ -27,19 +27,19 @@ def get_all_images(dir):
 
 def main():
     parser = argparse.ArgumentParser(description='image resizer')
-    parser.add_argument('-d',dest='dir', metavar='DIRECTORY',type=str,nargs=1,required=True,
+    parser.add_argument('-d',dest='dir', metavar='DIRECTORY',type=str,required=True,
                         help='input directory on your computer, example /disk1/dir1/')
-    parser.add_argument('-s',dest='size', help='definition of the jpg file', type=int, nargs=2)
+    parser.add_argument('-s',dest='size', help='definition of the jpg file', type=int,nargs=2)
     parser.add_argument('-f',dest='save_dir', help='directory of the resized files',
-                        type=str, nargs=1, required=True)
+                        type=str, required=True)
     arg = parser.parse_args()
 
-    dir = arg.dir[0]
+    dir = arg.dir
     size = tuple(arg.size)
     if not arg.size:
         size = (600, 800)
 
-    save_dir = arg.save_dir[0]
+    save_dir = arg.save_dir
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)
 
